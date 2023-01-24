@@ -51,7 +51,7 @@ public class LoginViewModel extends AndroidViewModel {
                     editor.putString("token", "Bearer " + token);
                     editor.commit();
 
-                    Intent i = new Intent(context, MainActivity.class);
+                    Intent i = new Intent(context, MenuPrincipal.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(i);
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrearUsuarioActivity">
+    tools:context=".ui.perfil.PerfilFragment">
 
         <EditText
             android:id="@+id/etId"
@@ -14,7 +14,7 @@
             android:text="id"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btCrearUsuario"
+            app:layout_constraintEnd_toStartOf="@+id/btEdit"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -24,6 +24,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Apellido"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +38,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Contraseña"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,11 +47,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
         <TextView
-            android:id="@+id/tvCrearUsuario"
-            android:layout_width="123dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="32dp"
-            android:text="Crear Usuario"
+            android:id="@+id/tvPerfil"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Perfil"
             android:textAlignment="textStart"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +65,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Telefono"
             android:inputType="text|numberSigned"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +73,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
 
+        <Button
+            android:id="@+id/btEdit"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:text="Editar"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
         <TextView
             android:id="@+id/tvApellido"
@@ -89,8 +103,9 @@
             android:id="@+id/etNombre"
             android:layout_width="240dp"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Nombre"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +120,7 @@
             android:layout_marginTop="12dp"
             android:ems="10"
             android:hint="Direccion"
+            android:enabled="false"
             android:inputType="text|textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.549"
@@ -139,13 +155,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etDireccion" />
 
-
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="240dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
+            android:enabled="false"
             android:hint="Email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -184,25 +200,15 @@
             android:id="@+id/tvEmail"
             android:layout_width="45dp"
             android:layout_height="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:text="Email"
             android:textAlignment="textStart"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.519"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCrearUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPerfil" />
 
-        <Button
-            android:id="@+id/btCrearUsuario"
-            android:layout_width="171dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:text="CrearUsuario"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
