@@ -10,23 +10,62 @@ import java.util.Objects;
 public class DetallePedido implements Serializable {
 
     private int idDetallePedido;
-    private Usuario idUsuarioDP;
-    private Producto idProductoDP;
+    private int idUsuarioDP;
+    private Usuario usuario;
+    private int idProductoDP;
+    private Producto producto;
     private Double precioPedido;
-    private Pedido IdentificadorDetallePedido;
+    private int IdentificadorDetallePedido;
+    private Pedido pedido;
 
 
 
     public DetallePedido(){}
-    public DetallePedido(int idDetallePedido, Usuario idUsuarioDP, Producto idProductoDP, Double precioPedido, Pedido IdentificadorDetallePedido ) {
+    public DetallePedido(int idDetallePedido, int idUsuarioDP, Usuario usuario, int idProductoDP, Producto producto, Double precioPedido, int IdentificadorDetallePedido, Pedido pedido ) {
+        this.idDetallePedido = idDetallePedido;
+        this.idUsuarioDP = idUsuarioDP;
+        this.usuario = usuario;
+        this.idProductoDP = idProductoDP;
+        this.producto = producto;
+        this.precioPedido = precioPedido;
+        this.IdentificadorDetallePedido = IdentificadorDetallePedido;
+        this.pedido = pedido;
+
+    }
+
+    public DetallePedido(int idDetallePedido, int idUsuarioDP, int idProductoDP,  Double precioPedido, int IdentificadorDetallePedido) {
         this.idDetallePedido = idDetallePedido;
         this.idUsuarioDP = idUsuarioDP;
         this.idProductoDP = idProductoDP;
         this.precioPedido = precioPedido;
         this.IdentificadorDetallePedido = IdentificadorDetallePedido;
 
+
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     public int getIdDetallePedido() {
         return idDetallePedido;
@@ -36,19 +75,19 @@ public class DetallePedido implements Serializable {
         this.idDetallePedido = idDetallePedido;
     }
 
-    public Usuario getIdUsuarioDP() {
+    public int getIdUsuarioDP() {
         return idUsuarioDP;
     }
 
-    public void setIdUsuarioDP(Usuario idUsuarioDP) {
+    public void setIdUsuarioDP(int idUsuarioDP) {
         this.idUsuarioDP = idUsuarioDP;
     }
 
-    public Producto getIdProductoDP() {
+    public int getIdProductoDP() {
         return idProductoDP;
     }
 
-    public void setIdProductoDP(Producto idProductoDP) {
+    public void setIdProductoDP(int idProductoDP) {
         this.idProductoDP = idProductoDP;
     }
 
@@ -60,11 +99,11 @@ public class DetallePedido implements Serializable {
         this.precioPedido = precioPedido;
     }
 
-    public Pedido getIdentificadorDetallePedido() {
+    public int getIdentificadorDetallePedido() {
         return IdentificadorDetallePedido;
     }
 
-    public void setIdentificadorDetallePedido(Pedido identificadorDetallePedido) {
+    public void setIdentificadorDetallePedido(int identificadorDetallePedido) {
         IdentificadorDetallePedido = identificadorDetallePedido;
     }
 

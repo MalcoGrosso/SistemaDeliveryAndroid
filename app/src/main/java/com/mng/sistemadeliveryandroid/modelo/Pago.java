@@ -10,23 +10,27 @@ import java.util.Objects;
 public class Pago implements Serializable {
 
     private int idPago;
-    private Usuario idUsuarioPago;
+    private Usuario Usuario;
+    private int idUsuarioPago;
     private int idEmpleadoPago;
-    private Pedido idPedidoPago;
-    private int estadoPago;
+    private Pedido Pedido;
+    private int idPedidoPago;
     private String FechaPago;
-    private TipoPago idTipoPagoP;
+    private TipoPago TipoPago;
+    private int idTipoPagoP;
 
 
 
     public Pago(){}
-    public Pago(int idPago, Usuario idUsuarioPago, int idEmpleadoPago, Pedido idPedidoPago, int estadoPago, String fechaPago, TipoPago idTipoPagoP) {
+    public Pago(int idPago, Usuario Usuario, int idUsuarioPago, int idEmpleadoPago, Pedido Pedido, int idPedidoPago,  String fechaPago, TipoPago TipoPago, int idTipoPagoP) {
         this.idPago = idPago;
+        this.Usuario = Usuario;
         this.idUsuarioPago = idUsuarioPago;
         this.idEmpleadoPago = idEmpleadoPago;
+        this.Pedido = Pedido;
         this.idPedidoPago = idPedidoPago;
-        this.estadoPago  = estadoPago;
         this.FechaPago = fechaPago;
+        this.TipoPago = TipoPago;
         this.idTipoPagoP = idTipoPagoP;
     }
 
@@ -39,12 +43,56 @@ public class Pago implements Serializable {
         this.idPago = idPago;
     }
 
-    public Usuario getIdUsuarioPago() {
+    public com.mng.sistemadeliveryandroid.modelo.Usuario getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(com.mng.sistemadeliveryandroid.modelo.Usuario usuario) {
+        Usuario = usuario;
+    }
+
+    public int getIdUsuarioPago() {
         return idUsuarioPago;
     }
 
-    public void setIdUsuarioPago(Usuario idUsuarioPago) {
+    public void setIdUsuarioPago(int idUsuarioPago) {
         this.idUsuarioPago = idUsuarioPago;
+    }
+
+    public com.mng.sistemadeliveryandroid.modelo.Pedido getPedido() {
+        return Pedido;
+    }
+
+    public void setPedido(com.mng.sistemadeliveryandroid.modelo.Pedido pedido) {
+        Pedido = pedido;
+    }
+
+    public int getIdPedidoPago() {
+        return idPedidoPago;
+    }
+
+    public void setIdPedidoPago(int idPedidoPago) {
+        this.idPedidoPago = idPedidoPago;
+    }
+
+    public void setFechaPago(String fechaPago) {
+        FechaPago = fechaPago;
+    }
+
+    public com.mng.sistemadeliveryandroid.modelo.TipoPago getTipoPago() {
+        return TipoPago;
+    }
+
+    public void setTipoPago(com.mng.sistemadeliveryandroid.modelo.TipoPago tipoPago) {
+        TipoPago = tipoPago;
+    }
+
+    public int getIdTipoPagoP() {
+        return idTipoPagoP;
+    }
+
+    public void setIdTipoPagoP(int idTipoPagoP) {
+        this.idTipoPagoP = idTipoPagoP;
     }
 
     public int getIdEmpleadoPago() {
@@ -55,21 +103,6 @@ public class Pago implements Serializable {
         this.idEmpleadoPago = idEmpleadoPago;
     }
 
-    public Pedido getIdPedidoPago() {
-        return idPedidoPago;
-    }
-
-    public void setIdPedidoPago(Pedido idPedidoPago) {
-        this.idPedidoPago = idPedidoPago;
-    }
-
-    public int getEstadoPago() {
-        return estadoPago;
-    }
-
-    public void setEstadoPago(int estadoPago) {
-        this.estadoPago = estadoPago;
-    }
 
     public String getFechaPago() {
         String dia="";
@@ -90,14 +123,6 @@ public class Pago implements Serializable {
         this.FechaPago = FechaPago;
     }
 
-
-    public TipoPago getIdTipoPagoP() {
-        return idTipoPagoP;
-    }
-
-    public void setIdTipoPagoP(TipoPago idTipoPagoP) {
-        this.idTipoPagoP = idTipoPagoP;
-    }
 
     @Override
     public boolean equals(Object o) {

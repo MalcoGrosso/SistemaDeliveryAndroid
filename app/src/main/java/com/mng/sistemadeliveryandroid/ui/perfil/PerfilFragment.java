@@ -15,11 +15,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.mng.sistemadeliveryandroid.R;
 import com.mng.sistemadeliveryandroid.modelo.Usuario;
 
+import java.time.Instant;
+
 public class PerfilFragment extends Fragment {
 
     private PerfilViewModel vmPerfil;
     private EditText etId,etNombre,etApellido,etDireccion,etEmail,etTelefono,etPassword;
     private Button btAccion;
+    private Instant instant = Instant.now();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,7 +38,7 @@ public class PerfilFragment extends Fragment {
                 etDireccion.setText(usuario.getDireccion()+"");
                 etTelefono.setText(usuario.getTelefono());
                 etEmail.setText(usuario.getEmail());
-                etPassword.setText(usuario.getPassword());
+             //   etPassword.setText(usuario.getPassword());
 
             }
         });

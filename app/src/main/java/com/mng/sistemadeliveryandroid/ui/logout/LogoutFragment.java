@@ -28,6 +28,7 @@ public class LogoutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(LogoutViewModel.class);
         return inflater.inflate(R.layout.fragment_logout, container, false);
+
     }
 
     @Override
@@ -38,8 +39,7 @@ public class LogoutFragment extends Fragment {
                 .setMessage("¿Desea cerrar sesión?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        System.exit(0);
+                    public void onClick(DialogInterface dialogInterface, int i) {System.exit(0);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -50,4 +50,47 @@ public class LogoutFragment extends Fragment {
                 })
                 .show();
     }
+
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        new AlertDialog.Builder(getContext())
+                .setTitle("Logout")
+                .setMessage("¿Desea cerrar sesión?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {System.exit(0);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Navigation.findNavController(getView()).popBackStack();
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        new AlertDialog.Builder(getContext())
+                .setTitle("Logout")
+                .setMessage("¿Desea cerrar sesión?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {System.exit(0);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Navigation.findNavController(getView()).popBackStack();
+                    }
+                })
+                .show();
+
+    }
+
 }

@@ -16,10 +16,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.DELETE;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -70,7 +72,7 @@ public class ApiRetrofit {
         //Producto
 
         @GET("Productos")
-        Call<Producto> obtenerProductos(@Header("Authorization") String token);
+        Call<List<Producto>> obtenerProductos(@Header("Authorization") String token);
 
 
         //Pago
@@ -81,6 +83,8 @@ public class ApiRetrofit {
         @POST("Pago/CrearPago")
         Call<Pago>crearPago(@Header("Authorization") String token, @Body Pago pago);
 
+        @GET("Pago/ConsultarPago")
+        Call<Pago> consultarPagos(@Header("Authorization") String token);
 
 
         //Pedidos
@@ -91,16 +95,25 @@ public class ApiRetrofit {
         @POST("Pedidos/Crear")
         Call<Pedido>crearPedido(@Header("Authorization") String token, @Body Pedido pedidos);
 
-        @PUT("Pedidos/ModificarUsuario")
+        @PUT("Pedidos/ModificarPedido")
         Call<Pedido>modificarPedidoUsuario(@Header("Authorization") String token, @Body Pedido pedido);
+
+        @PUT("Pedidos/ModificarPedido2")
+        Call<Pedido>modificarPedidoUsuario2(@Header("Authorization") String token, @Body Pedido pedido);
+
+        @GET("Pedidos/obtenerPedido")
+        Call<Pedido> obtenerPedido(@Header("Authorization") String token);
+
+    /*    @GET("Pedidos/consultarPedido")
+        Call<Pedido> consultarPedidoPedido(@Header("Authorization") String token);
+*/
 
 
         //DetallePedido
 
         @POST("DetallePedido/AgregarDetallePedido")
         Call<DetallePedido>AgregarDetallePedido(@Header("Authorization") String token, @Body DetallePedido detallePedido);
-
-        @DELETE("DetallePedido/QuitarDetallePedido")
+        @HTTP(method = "DELETE", path = "DetallePedido/QuitarDetallePedido", hasBody = true)
         Call<DetallePedido>QuitarDetallePedido(@Header("Authorization") String token, @Body DetallePedido detallePedido);
 
         @GET("DetallePedido")
@@ -108,8 +121,11 @@ public class ApiRetrofit {
 
         @GET("DetallePedido/DetallePedido")
         Call<DetallePedido> obtenerListaDetalle(@Header("Authorization") String token);
-
-
+   //     @HTTP(method = "GET", path = "DetallePedido/CantidadPedido", hasBody = true)
+   //     @GET("DetallePedido/CantidadPedido/{idProductoDP}")
+   //     Call<DetallePedido> cantidadPedidoProducto(@Header("Authorization") String token, @Path("idProductoDP") int idProductoDP);
+        @POST("DetallePedido/CantidadPedido")
+        Call<DetallePedido>cantidadPedidoProducto(@Header("Authorization") String token, @Body DetallePedido detallePedido);
     }
 
 }

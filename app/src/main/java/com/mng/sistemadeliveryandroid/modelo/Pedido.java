@@ -13,23 +13,42 @@ public class Pedido implements Serializable {
     private String fechaPedido;
     private String fechaEntrega;
     private int estado;
-    private Usuario idUsuarioPedido;
+    private int idUsuarioPedido;
+    private Usuario usuario;
     private String latitudPedido;
     private String longitudPedido;
+    private double montoFinal;
 
 
     public Pedido() {}
-    public Pedido(int idPedido, int idEmpleadoPedido, String fechaPedido, String fechaEntrega, int estado, Usuario idUsuarioPedido, String latitudPedido, String longitudPedido) {
+    public Pedido(int idPedido, int idEmpleadoPedido, String fechaPedido, String fechaEntrega, int estado, int idUsuarioPedido, Usuario usuario, String latitudPedido, String longitudPedido, double montoFinal) {
         this.idPedido = idPedido;
         this.idEmpleadoPedido = idEmpleadoPedido;
         this.fechaPedido = fechaPedido;
         this.fechaEntrega = fechaEntrega;
         this.estado = estado;
         this.idUsuarioPedido = idUsuarioPedido;
+        this.usuario = usuario;
         this.latitudPedido = latitudPedido;
         this.longitudPedido = longitudPedido;
+        this.montoFinal = montoFinal;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public double getMontoFinal() {
+        return montoFinal;
+    }
+
+    public void setMontoFinal(double montoFinal) {
+        this.montoFinal = montoFinal;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public int getIdPedido() {
         return idPedido;
@@ -78,6 +97,13 @@ public class Pedido implements Serializable {
         return dia;
     }
 
+    public void setFechaPedido(String fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
 
     public int getEstado() {
         return estado;
@@ -87,11 +113,11 @@ public class Pedido implements Serializable {
         this.estado = estado;
     }
 
-    public Usuario getIdUsuarioPedido() {
+    public int getIdUsuarioPedido() {
         return idUsuarioPedido;
     }
 
-    public void setIdUsuarioPedido(Usuario idUsuarioPedido) {
+    public void setIdUsuarioPedido(int idUsuarioPedido) {
         this.idUsuarioPedido = idUsuarioPedido;
     }
 

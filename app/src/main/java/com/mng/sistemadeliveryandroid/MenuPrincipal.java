@@ -1,5 +1,8 @@
 package com.mng.sistemadeliveryandroid;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mng.sistemadeliveryandroid.databinding.MenuPrincipalBinding;
 import com.mng.sistemadeliveryandroid.modelo.Usuario;
 import com.mng.sistemadeliveryandroid.request.ApiRetrofit;
+import com.mng.sistemadeliveryandroid.ui.logout.LogoutFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,21 +32,23 @@ public class MenuPrincipal extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private MenuPrincipalBinding binding;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = MenuPrincipalBinding.inflate(getLayoutInflater());
+        context = this.getApplicationContext();
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+      /*  binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         setHeader(navigationView);
@@ -53,6 +59,8 @@ public class MenuPrincipal extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
     }
 
     @Override
@@ -105,6 +113,17 @@ public class MenuPrincipal extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        //MenuPrincipal.this.finish();
 
     }
 }

@@ -11,6 +11,8 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+
+
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.mng.sistemadeliveryandroid.ui.gallery.GalleryFragment"
@@ -32,4 +34,38 @@
         android:name="com.mng.sistemadeliveryandroid.ui.logout.LogoutFragment"
         android:label="Cerrar Sesion"
         tools:layout="LogOut" />
+    <fragment
+        android:id="@+id/nav_HacerPedido"
+        android:name="com.mng.sistemadeliveryandroid.ui.Productos.ProductosFragment"
+        android:label="Productos"
+        tools:layout="Productos" >
+        <action
+            android:id="@+id/action_nav_HacerPedido_to_nav_PedidoFragment"
+            app:destination="@id/nav_PedidoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_PedidoFragment"
+        android:name="com.mng.sistemadeliveryandroid.ui.Pedido.PedidoFragment"
+        android:label="Pedido"
+        tools:layout="Pedido" >
+        <action
+            android:id="@+id/action_nav_PedidoFragment_to_nav_HacerPedido"
+            app:destination="@id/nav_HacerPedido" />
+        <action
+            android:id="@+id/action_nav_PedidoFragment_to_nav_PagoFragment"
+            app:destination="@id/nav_PagoFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_PagoFragment"
+        android:name="com.mng.sistemadeliveryandroid.ui.Pago.PagoFragment"
+        android:label="Pago"
+        tools:layout="@layout/fragment_pago" >
+        <action
+            android:id="@+id/action_nav_PagoFragment_to_nav_PedidoFragment"
+            app:destination="@id/nav_PedidoFragment" />
+    </fragment>
+
+
 </navigation>
