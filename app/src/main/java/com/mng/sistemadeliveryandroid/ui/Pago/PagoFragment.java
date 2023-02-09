@@ -77,7 +77,6 @@ public class PagoFragment extends Fragment {
             public void onClick(View v) {
 
                 pago.setIdPago(0);
-                pago.setIdUsuarioPago(0);
                 pago.setIdPedidoPago(0);
                 pago.setFechaPago(instant.toString());
                 pago.setIdTipoPagoP(binding.spMPago.getSelectedItemPosition() + 1);

@@ -11,7 +11,6 @@ public class Pago implements Serializable {
 
     private int idPago;
     private Usuario Usuario;
-    private int idUsuarioPago;
     private Pedido Pedido;
     private int idPedidoPago;
     private String FechaPago;
@@ -21,10 +20,9 @@ public class Pago implements Serializable {
 
 
     public Pago(){}
-    public Pago(int idPago, Usuario Usuario, int idUsuarioPago, Pedido Pedido, int idPedidoPago,  String fechaPago, TipoPago TipoPago, int idTipoPagoP) {
+    public Pago(int idPago, Usuario Usuario,  Pedido Pedido, int idPedidoPago,  String fechaPago, TipoPago TipoPago, int idTipoPagoP) {
         this.idPago = idPago;
         this.Usuario = Usuario;
-        this.idUsuarioPago = idUsuarioPago;
         this.Pedido = Pedido;
         this.idPedidoPago = idPedidoPago;
         this.FechaPago = fechaPago;
@@ -49,13 +47,6 @@ public class Pago implements Serializable {
         Usuario = usuario;
     }
 
-    public int getIdUsuarioPago() {
-        return idUsuarioPago;
-    }
-
-    public void setIdUsuarioPago(int idUsuarioPago) {
-        this.idUsuarioPago = idUsuarioPago;
-    }
 
     public com.mng.sistemadeliveryandroid.modelo.Pedido getPedido() {
         return Pedido;
