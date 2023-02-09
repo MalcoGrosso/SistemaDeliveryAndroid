@@ -38,7 +38,6 @@ public class LoginViewModel extends AndroidViewModel {
 
         User usuario = new User(email, password);
         Log.d("salida",usuario.getEmail());
-      //  Log.d("salida",usuario.getPassword());
         Call<String> tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().login(usuario);
         Log.d("salida",tokenPromesa.toString());
         tokenPromesa.enqueue(new Callback<String>() {

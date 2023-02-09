@@ -53,16 +53,7 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
 
-    private String ObtenerToken(){
-        SharedPreferences sp= context.getSharedPreferences("token",0);
-        String token=sp.getString("token","-1");
-        return token;
-
-    };
-
     public void ObtenerUsuario(){
-        // Propietario p= api.obtenerUsuarioActual();
-
 
         Usuario usuario;
 
@@ -91,8 +82,6 @@ public class PerfilViewModel extends AndroidViewModel {
 
             }
         });
-
-        // mPropietario.setValue(p);
 
     }
 

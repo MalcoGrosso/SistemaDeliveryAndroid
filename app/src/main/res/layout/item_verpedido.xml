@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/cardview_light_background"
+    app:contentPadding="10dp"
+    app:cardElevation="10dp"
+    android:layout_marginVertical="5dp"
+    android:id="@+id/cvVerPedido"
+    app:cardCornerRadius="6dp"
+    android:backgroundTint="@color/teal_200"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="393dp"
+        android:layout_height="265dp">
+
+        <TextView
+            android:id="@+id/tvidMontoFinal"
+            android:layout_width="116dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="152dp"
+            android:text="idMonto"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toEndOf="@+id/textMontoPedido"
+            app:layout_constraintTop_toBottomOf="@+id/tvidPedido" />
+
+        <TextView
+            android:id="@+id/tvidPedido"
+            android:layout_width="116dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="16dp"
+            android:text="idPedido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textIdentificador"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvfechaPedido"
+            android:layout_width="182dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="60dp"
+            android:text="fechaPedido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.924"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvidPedido" />
+
+        <TextView
+            android:id="@+id/textIdentificador"
+            android:layout_width="222dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:text="Numero de Pedido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textfechaPedido"
+            android:layout_width="179dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="56dp"
+            android:text="Fecha Pedido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.028"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textIdentificador" />
+
+        <TextView
+            android:id="@+id/textMontoPedido"
+            android:layout_width="190dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="56dp"
+            android:text="Monto Pedido"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textfechaPedido" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -13,6 +13,7 @@ public class Producto implements Serializable {
     private String nombre;
     private String imagen;
     private double precioProducto;
+    private int cantidad;
 
 
     public Producto(){}
@@ -23,6 +24,13 @@ public class Producto implements Serializable {
         this.precioProducto = precioProducto;
     }
 
+    public int getCanti() {
+        return cantidad;
+    }
+
+    public void setCanti(int canti) {
+        this.cantidad = canti;
+    }
 
     public int getIdProducto() {
         return idProducto;

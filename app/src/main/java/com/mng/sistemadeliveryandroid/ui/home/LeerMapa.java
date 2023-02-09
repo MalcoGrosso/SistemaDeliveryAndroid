@@ -37,7 +37,7 @@ public class LeerMapa implements OnMapReadyCallback {
     @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
             map= googleMap;
-            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
             Marker marcadorDelivery=googleMap.addMarker(new MarkerOptions().position(delivery));
             marcadorDelivery.setTitle("Delivery");
             marcadorDelivery.setPosition(delivery);

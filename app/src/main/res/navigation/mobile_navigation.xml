@@ -11,7 +11,25 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/nav_VerPedidos"
+        android:name="com.mng.sistemadeliveryandroid.ui.Pedido.verPedidoFragment"
+        android:label="Ver Pedido"
+        tools:layout="@layout/fragment_verpedido" >
+        <action
+            android:id="@+id/action_nav_VerPedidos_to_nav_VerPedidosDetalleFragment"
+            app:destination="@id/nav_VerPedidosDetalleFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/nav_VerPedidosDetalleFragment"
+        android:name="com.mng.sistemadeliveryandroid.ui.Pedido.verPedidoDetalleFragment"
+        android:label="Ver Pedido Detalle"
+        tools:layout="@layout/fragment_ver_pedido_detalle" >
+        <action
+            android:id="@+id/action_nav_VerPedidosDetalleFragment_to_nav_VerPedidos"
+            app:destination="@id/nav_VerPedidos" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"

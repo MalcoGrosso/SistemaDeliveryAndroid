@@ -93,7 +93,7 @@ public class ProductosViewModel extends AndroidViewModel {
         Usuario usuario;
         SharedPreferences sp = context.getSharedPreferences("token",0);
         String token = sp.getString("token","-1");
-        Call<List<Producto>> tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().obtenerProductos(token);
+        Call<List<Producto>> tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().obtenerProductosPedido(token);
         tokenPromesa.enqueue(new Callback<List<Producto>>() {
             @Override
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
@@ -113,8 +113,6 @@ public class ProductosViewModel extends AndroidViewModel {
         });
 
     }
-
-
 
     public void modificarPedidoUsuario(Pedido pedido) {
 
@@ -139,35 +137,6 @@ public class ProductosViewModel extends AndroidViewModel {
         });
 
     }
-/*
-    public void consultarPagos(){
 
-        SharedPreferences sp = context.getSharedPreferences("token", 0);
-        String token = sp.getString("token", "-1");
-        Call<Pago> pag = ApiRetrofit.getServiceSistemaDelivery().consultarPagos(token);
-        pag.enqueue(new Callback<Pago>() {
-            @Override
-            public void onResponse(Call<Pago> call, Response<Pago> response) {
-                if (response.isSuccessful()) {
-                        if(response.body() == null){
-                            Intent i = new Intent(context, MainActivity.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            context.startActivity(i);
-                        }
-
-                } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Pago> call, Throwable t) {
-                Toast.makeText(context, "hubo un error inesperado" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-*/
 
 }

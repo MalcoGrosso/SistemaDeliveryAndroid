@@ -46,8 +46,8 @@ public class PedidoViewModel extends AndroidViewModel {
     public void obtenerPedido(){
         SharedPreferences sp = context.getSharedPreferences("token",0);
         String token = sp.getString("token","-1");
-        Call<Pedido> tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().obtenerPedido(token);
-        tokenPromesa.enqueue(new Callback<Pedido>() {
+        Call<Pedido> op = ApiRetrofit.getServiceSistemaDelivery().obtenerPedido(token);
+        op.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                 Log.d("salida", response.toString());

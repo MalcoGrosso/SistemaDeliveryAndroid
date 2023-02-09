@@ -34,13 +34,8 @@ public class PedidoFragment extends Fragment {
     private TextView tvNumeroPedido, tvMontoPagar;
     private Button btPagar;
     private Context context;
-    private Pedido pedi;
-    private Instant instant = Instant.now();
-    /*
-    public static PedidoFragment newInstance() {
-        return new PedidoFragment();
-    }
-*/
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mPedidoViewModel = new ViewModelProvider(this).get(PedidoViewModel.class);
@@ -62,31 +57,10 @@ public class PedidoFragment extends Fragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 Navigation.findNavController(view).navigate(R.id.nav_PagoFragment,bundle);
-    /*
-                pedi = new Pedido();
-
-                pedi.setIdPedido(0);
-                pedi.setIdEmpleadoPedido(0);
-                pedi.setEstado(0);
-                pedi.setFechaPedido(instant.toString());
-                pedi.setFechaEntrega(instant.toString());
-                pedi.setIdUsuarioPedido(0);
-                pedi.setLatitudPedido("0");
-                pedi.setLongitudPedido("0");
-                pedi.setMontoFinal(0.0);
-                mPedidoViewModel.modificarPedidoUsuario2(pedi);
-                Intent i = new Intent(context, MainActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-                */
-
             }
         });
 
-
-
         return view;
-
 
     }
 

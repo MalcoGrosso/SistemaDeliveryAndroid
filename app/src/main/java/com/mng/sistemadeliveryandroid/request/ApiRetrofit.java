@@ -71,26 +71,22 @@ public class ApiRetrofit {
 
         //Producto
 
-        @GET("Productos")
-        Call<List<Producto>> obtenerProductos(@Header("Authorization") String token);
+
+
+        @GET("Productos/ProductosPedidos")
+        Call<List<Producto>> obtenerProductosPedido(@Header("Authorization") String token);
 
 
         //Pago
 
-        @GET("Pago")
-        Call<Pago> obtenerPagos(@Header("Authorization") String token);
-
         @POST("Pago/CrearPago")
         Call<Pago>crearPago(@Header("Authorization") String token, @Body Pago pago);
-
-        @GET("Pago/ConsultarPago")
-        Call<Pago> consultarPagos(@Header("Authorization") String token);
 
 
         //Pedidos
 
         @GET("Pedidos")
-        Call<Pedido> obtenerPedidos(@Header("Authorization") String token);
+        Call<List<Pedido>> obtenerPedidos(@Header("Authorization") String token);
 
         @POST("Pedidos/Crear")
         Call<Pedido>crearPedido(@Header("Authorization") String token, @Body Pedido pedidos);
@@ -104,15 +100,13 @@ public class ApiRetrofit {
         @GET("Pedidos/obtenerPedido")
         Call<Pedido> obtenerPedido(@Header("Authorization") String token);
 
-    /*    @GET("Pedidos/consultarPedido")
-        Call<Pedido> consultarPedidoPedido(@Header("Authorization") String token);
-*/
 
 
         //DetallePedido
 
         @POST("DetallePedido/AgregarDetallePedido")
         Call<DetallePedido>AgregarDetallePedido(@Header("Authorization") String token, @Body DetallePedido detallePedido);
+
         @HTTP(method = "DELETE", path = "DetallePedido/QuitarDetallePedido", hasBody = true)
         Call<DetallePedido>QuitarDetallePedido(@Header("Authorization") String token, @Body DetallePedido detallePedido);
 
@@ -121,11 +115,13 @@ public class ApiRetrofit {
 
         @GET("DetallePedido/DetallePedido")
         Call<DetallePedido> obtenerListaDetalle(@Header("Authorization") String token);
-   //     @HTTP(method = "GET", path = "DetallePedido/CantidadPedido", hasBody = true)
-   //     @GET("DetallePedido/CantidadPedido/{idProductoDP}")
-   //     Call<DetallePedido> cantidadPedidoProducto(@Header("Authorization") String token, @Path("idProductoDP") int idProductoDP);
+
         @POST("DetallePedido/CantidadPedido")
         Call<DetallePedido>cantidadPedidoProducto(@Header("Authorization") String token, @Body DetallePedido detallePedido);
+
+        @GET("DetallePedido/todoVerDetallePedido/{id}")
+        Call<List<DetallePedido>> obtenerVerPedidoDetalle(@Header("Authorization") String token, @Path("id") int idPedido);
+
     }
 
 }

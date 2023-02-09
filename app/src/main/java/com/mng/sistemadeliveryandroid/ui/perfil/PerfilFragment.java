@@ -38,7 +38,6 @@ public class PerfilFragment extends Fragment {
                 etDireccion.setText(usuario.getDireccion()+"");
                 etTelefono.setText(usuario.getTelefono());
                 etEmail.setText(usuario.getEmail());
-             //   etPassword.setText(usuario.getPassword());
 
             }
         });

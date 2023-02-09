@@ -25,8 +25,6 @@ public class CrearUsuarioViewModel extends AndroidViewModel {
 
     private Context context;
 
- //   private ApiClient api= ApiClient.getApi();
-
     public CrearUsuarioViewModel(@NonNull Application application) {
         super(application);
         this.context= application.getApplicationContext();
@@ -65,26 +63,5 @@ public class CrearUsuarioViewModel extends AndroidViewModel {
 
     }
 
-
-
-
-/*
-    public void ObtenerUsuario(){
-        Propietario p= api.obtenerUsuarioActual();
-        mPropietario.setValue(p);
-    }
-    public void actualizarPropietario(String boton, Propietario p){
-        if(boton.equals("GUARDAR"))
-        {
-            api.actualizarPerfil(p);
-            propiedadEnable.setValue(false);
-            textoBoton.setValue("EDITAR");
-        }
-        else{
-            propiedadEnable.setValue(true);
-            textoBoton.setValue("GUARDAR");
-        }
-    }
-*/
 
 }

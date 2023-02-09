@@ -41,8 +41,6 @@ public class ProductosFragment extends Fragment {
     private RecyclerView recyclerViewLista;
     private Button btHacerPedido;
     private Pedido pedido;
-    private Date currentTime = Calendar.getInstance().getTime();
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private Instant instant = Instant.now();
     private Context context;
 
@@ -71,7 +69,6 @@ public class ProductosFragment extends Fragment {
 
                         false
                 );
-   //             rViewModel.consultarPagos();
                 recyclerViewLista.setLayoutManager(linearLayoutManager);
                 adapter = new ProductosAdapter(root, productos);
                 recyclerViewLista.setAdapter(adapter);
@@ -86,10 +83,6 @@ public class ProductosFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 rViewModel.modificarPedidoUsuario(pedido);
                 Navigation.findNavController(root).navigate(R.id.nav_PedidoFragment, bundle);
-    /*            Intent i = new Intent(context, PedidoFragment.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-*/
             }
         });
 

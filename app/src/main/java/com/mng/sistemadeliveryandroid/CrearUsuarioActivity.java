@@ -37,10 +37,6 @@ public class CrearUsuarioActivity extends AppCompatActivity {
         vmCrearUsuario = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())
                 .create(CrearUsuarioViewModel.class);
         inicializarVista();
-//        vmCrearUsuario = new ViewModelProvider(this).get(CrearUsuarioViewModel.class);
-
-
-
 
 
     }

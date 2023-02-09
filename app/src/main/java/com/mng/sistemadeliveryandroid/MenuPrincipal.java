@@ -123,7 +123,7 @@ public class MenuPrincipal extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        //MenuPrincipal.this.finish();
+        MenuPrincipal.this.finish();
 
     }
 }

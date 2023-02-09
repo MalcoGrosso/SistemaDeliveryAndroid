@@ -64,7 +64,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
         Producto produ = productos.get(position);
         holder.tvNombre.setText(produ.getNombre());
         holder.tvDetalles.setText("$"+produ.getPrecioProducto());
-        holder.tvCantidad.setText("0");
+        holder.tvCantidad.setText(produ.getCanti()+"");
 
 
         Glide.with(context)
@@ -81,8 +81,8 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
             detallePedido.setIdUsuarioDP(0);
             detallePedido.setIdProductoDP(produ.getIdProducto());
             agregarDetallePedido(detallePedido);
-            cantidadPedidoProducto(detallePedido);
-            holder.tvCantidad.setText(z);
+            produ.setCanti(produ.getCanti()+1);
+            holder.tvCantidad.setText(produ.getCanti()+"");
             }
 
 
@@ -91,6 +91,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
         holder.btQuitarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(produ.getCanti() > 0){
                 detallePedido = new DetallePedido();
                 detallePedido.setIdDetallePedido(0);
                 detallePedido.setIdentificadorDetallePedido(0);
@@ -98,8 +99,12 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
                 detallePedido.setIdUsuarioDP(0);
                 detallePedido.setIdProductoDP(produ.getIdProducto());
                 QuitarDetallePedido(detallePedido);
-                cantidadPedidoProducto(detallePedido);
-                holder.tvCantidad.setText(z);
+                produ.setCanti(produ.getCanti()-1);
+                holder.tvCantidad.setText(produ.getCanti()+"");
+                }
+                else{
+                    holder.tvCantidad.setText(produ.getCanti()+"");
+                }
             }
         });
     }
@@ -129,8 +134,34 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
 
         SharedPreferences sp = context.getSharedPreferences("token", 0);
         String token = sp.getString("token", "-1");
-        Call<DetallePedido> inm = ApiRetrofit.getServiceSistemaDelivery().AgregarDetallePedido(token, detallePedido);
-        inm.enqueue(new Callback<DetallePedido>() {
+        Call<DetallePedido> adp = ApiRetrofit.getServiceSistemaDelivery().AgregarDetallePedido(token, detallePedido);
+        adp.enqueue(new Callback<DetallePedido>() {
+            @Override
+            public void onResponse(Call<DetallePedido> call, Response<DetallePedido> response) {
+                if (response.isSuccessful()) {
+
+                } else {
+                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetallePedido> call, Throwable t) {
+                Toast.makeText(context, "hubo un error inesperado" + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+
+
+    public void QuitarDetallePedido(DetallePedido detallePedido) {
+
+        SharedPreferences sp = context.getSharedPreferences("token", 0);
+        String token = sp.getString("token", "-1");
+        Call<DetallePedido> qdp = ApiRetrofit.getServiceSistemaDelivery().QuitarDetallePedido(token, detallePedido);
+        qdp.enqueue(new Callback<DetallePedido>() {
             @Override
             public void onResponse(Call<DetallePedido> call, Response<DetallePedido> response) {
                 if (response.isSuccessful()) {
@@ -159,7 +190,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
             public void onResponse(Call<DetallePedido> call, Response<DetallePedido> response) {
                 if (response.isSuccessful()) {
                     Log.d("salida", "response.body().getIdProd");
-                    z = String.valueOf(response.body().getIdUsuarioDP());
+                    //  producto.setCanti(String.valueOf(response.body().getIdUsuarioDP()));
                 } else {
                     Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
                 }
@@ -174,29 +205,6 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
 
     }
 
-    public void QuitarDetallePedido(DetallePedido detallePedido) {
-
-        SharedPreferences sp = context.getSharedPreferences("token", 0);
-        String token = sp.getString("token", "-1");
-        Call<DetallePedido> inm = ApiRetrofit.getServiceSistemaDelivery().QuitarDetallePedido(token, detallePedido);
-        inm.enqueue(new Callback<DetallePedido>() {
-            @Override
-            public void onResponse(Call<DetallePedido> call, Response<DetallePedido> response) {
-                if (response.isSuccessful()) {
-
-                } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DetallePedido> call, Throwable t) {
-                Toast.makeText(context, "hubo un error inesperado" + t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
 
 }
 

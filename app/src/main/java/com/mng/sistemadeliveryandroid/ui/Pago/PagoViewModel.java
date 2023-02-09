@@ -64,8 +64,8 @@ public class PagoViewModel extends AndroidViewModel {
 
         SharedPreferences sp = context.getSharedPreferences("token", 0);
         String token = sp.getString("token", "-1");
-        Call<Pago> inm = ApiRetrofit.getServiceSistemaDelivery().crearPago(token, pago);
-        inm.enqueue(new Callback<Pago>() {
+        Call<Pago> cp = ApiRetrofit.getServiceSistemaDelivery().crearPago(token, pago);
+        cp.enqueue(new Callback<Pago>() {
             @Override
             public void onResponse(Call<Pago> call, Response<Pago> response) {
                 if (response.isSuccessful()) {
@@ -88,19 +88,14 @@ public class PagoViewModel extends AndroidViewModel {
 
         SharedPreferences sp = context.getSharedPreferences("token", 0);
         String token = sp.getString("token", "-1");
-        Call<Pedido> inm = ApiRetrofit.getServiceSistemaDelivery().modificarPedidoUsuario2(token, pedido);
-        inm.enqueue(new Callback<Pedido>() {
+        Call<Pedido> mpu2 = ApiRetrofit.getServiceSistemaDelivery().modificarPedidoUsuario2(token, pedido);
+        mpu2.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                 if (response.isSuccessful()) {
 
-
                     Bundle bundle = new Bundle();
                     Navigation.findNavController(view).navigate(R.id.nav_home, bundle);
-
-                //    Intent i = new Intent(context, MenuPrincipal.class);
-               //     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                 //   context.startActivity(i);
                     Toast.makeText(context, "Pedido Realizado Correctamente", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
