@@ -78,7 +78,6 @@ public class PagoFragment extends Fragment {
 
                 pago.setIdPago(0);
                 pago.setIdUsuarioPago(0);
-                pago.setIdEmpleadoPago(0);
                 pago.setIdPedidoPago(0);
                 pago.setFechaPago(instant.toString());
                 pago.setIdTipoPagoP(binding.spMPago.getSelectedItemPosition() + 1);
@@ -87,7 +86,6 @@ public class PagoFragment extends Fragment {
                 pedi = new Pedido();
 
                 pedi.setIdPedido(0);
-                pedi.setIdEmpleadoPedido(0);
                 pedi.setEstado(0);
                 pedi.setFechaPedido(instant.toString());
                 pedi.setFechaEntrega(instant.toString());

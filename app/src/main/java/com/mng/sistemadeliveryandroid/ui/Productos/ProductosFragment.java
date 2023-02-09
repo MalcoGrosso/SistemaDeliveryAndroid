@@ -91,7 +91,7 @@ public class ProductosFragment extends Fragment {
         pedido = new Pedido();
 
         pedido.setIdPedido(0);
-        pedido.setIdEmpleadoPedido(0);
+        pedido.setIdEmpleadoPedido(2);
         pedido.setEstado(0);
         pedido.setFechaPedido(instant.toString());
         pedido.setFechaEntrega(instant.toString());
