@@ -10,7 +10,6 @@ import java.util.Objects;
 public class DetallePedido implements Serializable {
 
     private int idDetallePedido;
-    private int idUsuarioDP;
     private Usuario usuario;
     private int idProductoDP;
     private Producto producto;
@@ -21,9 +20,8 @@ public class DetallePedido implements Serializable {
 
 
     public DetallePedido(){}
-    public DetallePedido(int idDetallePedido, int idUsuarioDP, Usuario usuario, int idProductoDP, Producto producto, Double precioPedido, int IdentificadorDetallePedido, Pedido pedido ) {
+    public DetallePedido(int idDetallePedido,  Usuario usuario, int idProductoDP, Producto producto, Double precioPedido, int IdentificadorDetallePedido, Pedido pedido ) {
         this.idDetallePedido = idDetallePedido;
-        this.idUsuarioDP = idUsuarioDP;
         this.usuario = usuario;
         this.idProductoDP = idProductoDP;
         this.producto = producto;
@@ -33,9 +31,8 @@ public class DetallePedido implements Serializable {
 
     }
 
-    public DetallePedido(int idDetallePedido, int idUsuarioDP, int idProductoDP,  Double precioPedido, int IdentificadorDetallePedido) {
+    public DetallePedido(int idDetallePedido,  int idProductoDP,  Double precioPedido, int IdentificadorDetallePedido) {
         this.idDetallePedido = idDetallePedido;
-        this.idUsuarioDP = idUsuarioDP;
         this.idProductoDP = idProductoDP;
         this.precioPedido = precioPedido;
         this.IdentificadorDetallePedido = IdentificadorDetallePedido;
@@ -73,14 +70,6 @@ public class DetallePedido implements Serializable {
 
     public void setIdDetallePedido(int idDetallePedido) {
         this.idDetallePedido = idDetallePedido;
-    }
-
-    public int getIdUsuarioDP() {
-        return idUsuarioDP;
-    }
-
-    public void setIdUsuarioDP(int idUsuarioDP) {
-        this.idUsuarioDP = idUsuarioDP;
     }
 
     public int getIdProductoDP() {

@@ -78,7 +78,6 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
             detallePedido.setIdDetallePedido(0);
             detallePedido.setIdentificadorDetallePedido(0);
             detallePedido.setPrecioPedido(produ.getPrecioProducto());
-            detallePedido.setIdUsuarioDP(0);
             detallePedido.setIdProductoDP(produ.getIdProducto());
             agregarDetallePedido(detallePedido);
             produ.setCanti(produ.getCanti()+1);
@@ -96,7 +95,6 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
                 detallePedido.setIdDetallePedido(0);
                 detallePedido.setIdentificadorDetallePedido(0);
                 detallePedido.setPrecioPedido(produ.getPrecioProducto());
-                detallePedido.setIdUsuarioDP(0);
                 detallePedido.setIdProductoDP(produ.getIdProducto());
                 QuitarDetallePedido(detallePedido);
                 produ.setCanti(produ.getCanti()-1);
@@ -179,32 +177,6 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiVi
         });
 
     }
-
-    public void cantidadPedidoProducto (DetallePedido detallePedido) {
-
-        SharedPreferences sp = context.getSharedPreferences("token", 0);
-        String token = sp.getString("token", "-1");
-        Call<DetallePedido> dp = ApiRetrofit.getServiceSistemaDelivery().cantidadPedidoProducto(token, detallePedido);
-        dp.enqueue(new Callback<DetallePedido>() {
-            @Override
-            public void onResponse(Call<DetallePedido> call, Response<DetallePedido> response) {
-                if (response.isSuccessful()) {
-                    Log.d("salida", "response.body().getIdProd");
-                    //  producto.setCanti(String.valueOf(response.body().getIdUsuarioDP()));
-                } else {
-                    Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DetallePedido> call, Throwable t) {
-                Toast.makeText(context, "hubo un error inesperado" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("salida", t.getMessage().toString());
-            }
-        });
-
-    }
-
 
 }
 
