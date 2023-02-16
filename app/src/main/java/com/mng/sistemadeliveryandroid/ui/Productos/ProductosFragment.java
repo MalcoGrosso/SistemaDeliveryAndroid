@@ -89,7 +89,6 @@ public class ProductosFragment extends Fragment {
         rViewModel.setProductos();
 
         pedido = new Pedido();
-
         pedido.setIdPedido(0);
         pedido.setIdEmpleadoPedido(2);
         pedido.setEstado(0);
@@ -99,7 +98,10 @@ public class ProductosFragment extends Fragment {
         pedido.setLatitudPedido(rViewModel.obtenerLatitud());
         pedido.setLongitudPedido(rViewModel.obtenerLongitud());
         pedido.setMontoFinal(0.0);
-        rViewModel.crearPedido(pedido);
+
+      //  rViewModel.crearPedido(pedido);
+
+
         return root;
     }
 }

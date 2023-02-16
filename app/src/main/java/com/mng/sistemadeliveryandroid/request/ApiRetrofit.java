@@ -28,7 +28,7 @@ import retrofit2.http.Query;
 public class ApiRetrofit {
 
 
-    private static final String PATH="http://192.168.1.100:5000/API/";
+    private static final String PATH="http://192.168.1.101:5000/API/";
 
     private static  ServiceSistemaDelivery servicioSistemaDelivery;
 

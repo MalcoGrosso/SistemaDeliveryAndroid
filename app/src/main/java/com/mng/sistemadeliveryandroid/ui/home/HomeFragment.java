@@ -13,11 +13,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.mng.sistemadeliveryandroid.R;
 import com.mng.sistemadeliveryandroid.databinding.FragmentHomeBinding;
+import com.mng.sistemadeliveryandroid.modelo.Pedido;
+
+import java.time.Instant;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private HomeViewModel homeViewModel;
+    private Instant instant = Instant.now();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +38,19 @@ public class HomeFragment extends Fragment {
             }
         });
         homeViewModel.leerMapa();
+
+        Pedido pedido = new Pedido();
+        pedido.setIdPedido(0);
+        pedido.setIdEmpleadoPedido(2);
+        pedido.setEstado(0);
+        pedido.setFechaPedido(instant.toString());
+        pedido.setFechaEntrega(instant.toString());
+        pedido.setIdUsuarioPedido(0);
+        pedido.setLatitudPedido(homeViewModel.obtenerLatitud());
+        pedido.setLongitudPedido(homeViewModel.obtenerLongitud());
+        pedido.setMontoFinal(0.0);
+        homeViewModel.crearPedido(pedido);
+
         return root;
     }
 
