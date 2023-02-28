@@ -77,7 +77,6 @@ public class ProductosFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-            //    Bundle bundle = new Bundle();
                 rViewModel.modificarPedidoUsuario(pedido);
 
                 Navigation.findNavController(root).navigate(R.id.nav_PedidoFragment, bundle);
@@ -97,7 +96,6 @@ public class ProductosFragment extends Fragment {
         pedido.setLongitudPedido(rViewModel.obtenerLongitud());
         pedido.setMontoFinal(0.0);
 
-      //  rViewModel.crearPedido(pedido);
 
 
         return root;

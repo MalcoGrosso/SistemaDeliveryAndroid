@@ -31,8 +31,6 @@ import retrofit2.Response;
 
 public class ProductosViewModel extends AndroidViewModel {
     private MutableLiveData<List<Producto>> productosMutable;
-    private MutableLiveData<Pedido> pedidoMutable;
-    private MutableLiveData<DetallePedido> detallePedidoMutable;
     private Context context;
 
     public ProductosViewModel(@NonNull Application application) {
@@ -49,7 +47,6 @@ public class ProductosViewModel extends AndroidViewModel {
     }
 
 
-
     public String obtenerLatitud(){
 
         SharedPreferences sp = context.getSharedPreferences("lati", 0);
@@ -64,40 +61,13 @@ public class ProductosViewModel extends AndroidViewModel {
         return  longitud;
     }
 
-
-    public void crearPedido(Pedido pedido) {
-
-            SharedPreferences sp = context.getSharedPreferences("token", 0);
-            String token = sp.getString("token", "-1");
-            Call<Pedido> inm = ApiRetrofit.getServiceSistemaDelivery().crearPedido(token, pedido);
-            inm.enqueue(new Callback<Pedido>() {
-                @Override
-                public void onResponse(Call<Pedido> call, Response<Pedido> response) {
-                    if (response.isSuccessful()) {
-
-                    } else {
-                        Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Pedido> call, Throwable t) {
-                    Toast.makeText(context, "hubo un error inesperado" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-
-    }
-
-
     public void setProductos(){
-        Usuario usuario;
         SharedPreferences sp = context.getSharedPreferences("token",0);
         String token = sp.getString("token","-1");
         Call<List<Producto>> tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().obtenerProductosPedido(token);
         tokenPromesa.enqueue(new Callback<List<Producto>>() {
             @Override
             public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
-                Log.d("salida", response.toString());
                 if(response.isSuccessful()){
 
                     List<Producto> productos = response.body();

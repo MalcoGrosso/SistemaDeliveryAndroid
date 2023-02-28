@@ -35,11 +35,9 @@ public class CrearUsuarioViewModel extends AndroidViewModel {
 
         Usuario usuario = new Usuario(nombre, apellido, direccion, email, password, telefono);
             Call tokenPromesa = ApiRetrofit.getServiceSistemaDelivery().nuevo(usuario);
-            Log.d("salida", tokenPromesa.toString());
             tokenPromesa.enqueue(new Callback<Usuario>() {
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    Log.d("salida", response.toString());
                     if (response.isSuccessful()) {
 
                         Toast.makeText(context.getApplicationContext(), "Usuario Creado Correctamente.", Toast.LENGTH_SHORT).show();
@@ -49,8 +47,6 @@ public class CrearUsuarioViewModel extends AndroidViewModel {
 
 
                     } else {
-                        Log.d("salida", "Crear Usuario sin respuesta");
-
                     }
                 }
 

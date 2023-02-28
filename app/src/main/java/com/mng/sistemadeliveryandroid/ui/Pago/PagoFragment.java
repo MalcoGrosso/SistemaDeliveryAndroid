@@ -41,7 +41,7 @@ public class PagoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-      //  return inflater.inflate(R.layout.fragment_pago, container, false);
+
 
         binding = FragmentPagoBinding.inflate(inflater, container, false);
         View root= binding.getRoot();

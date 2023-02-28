@@ -50,7 +50,6 @@ public class verPedidoDetalleViewModel extends AndroidViewModel {
         tokenPromesa.enqueue(new Callback<List<DetallePedido>>() {
             @Override
             public void onResponse(Call<List<DetallePedido>> call, Response<List<DetallePedido>> response) {
-                Log.d("salida", response.toString());
                 if(response.isSuccessful()){
 
                     List<DetallePedido> dp = response.body();

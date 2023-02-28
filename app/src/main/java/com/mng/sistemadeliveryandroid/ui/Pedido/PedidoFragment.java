@@ -41,15 +41,12 @@ public class PedidoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-      //  View view = inflater.inflate(R.layout.fragment_pedido, container, false);
         binding = FragmentPedidoBinding.inflate(inflater,  container, false);
         View root = binding.getRoot();
         mPedidoViewModel = new ViewModelProvider(this).get(PedidoViewModel.class);
         recyclerViewLista = binding.RVDPMPedido;
         btPagar = binding.btPagar;
         Bundle bundle = this.getArguments();
- //       Object z = bundle.get("pedido");
- //        adapter = (ProductosAdapter) bundle.getSerializable("pedido");
         Object z = bundle.get("pedido");
         adapter1 = (PedidoAdapter) bundle.getSerializable("pedido");
 
@@ -74,7 +71,7 @@ public class PedidoFragment extends Fragment {
 
                 recyclerViewLista.setLayoutManager(linearLayoutManager);
 
-          //      adapter1 = new PedidoAdapter(root, (List<Producto>) adapter1);
+
                 recyclerViewLista.setAdapter(adapter1);
 
 

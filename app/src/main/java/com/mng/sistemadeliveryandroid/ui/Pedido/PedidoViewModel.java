@@ -50,7 +50,6 @@ public class PedidoViewModel extends AndroidViewModel {
         op.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
-                Log.d("salida", response.toString());
                 if(response.isSuccessful()){
                     Pedido pedido = response.body();
 
