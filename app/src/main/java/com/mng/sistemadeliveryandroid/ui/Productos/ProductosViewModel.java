@@ -101,7 +101,7 @@ public class ProductosViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
 
                     List<Producto> productos = response.body();
-                    productosMutable.postValue(productos);;
+                    productosMutable.postValue(productos);
                 }
 
             }

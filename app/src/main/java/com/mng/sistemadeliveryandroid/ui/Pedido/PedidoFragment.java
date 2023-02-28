@@ -4,13 +4,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mng.sistemadeliveryandroid.CrearUsuarioActivity;
-import com.mng.sistemadeliveryandroid.MainActivity;
 import com.mng.sistemadeliveryandroid.R;
 import com.mng.sistemadeliveryandroid.databinding.FragmentPedidoBinding;
 import com.mng.sistemadeliveryandroid.modelo.Pedido;
+import com.mng.sistemadeliveryandroid.modelo.Producto;
 
-import java.time.Instant;
+import java.util.List;
 
 
 public class PedidoFragment extends Fragment {
@@ -34,33 +34,67 @@ public class PedidoFragment extends Fragment {
     private TextView tvNumeroPedido, tvMontoPagar;
     private Button btPagar;
     private Context context;
+    private RecyclerView recyclerViewLista;
+    private PedidoAdapter adapter1;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+      //  View view = inflater.inflate(R.layout.fragment_pedido, container, false);
+        binding = FragmentPedidoBinding.inflate(inflater,  container, false);
+        View root = binding.getRoot();
         mPedidoViewModel = new ViewModelProvider(this).get(PedidoViewModel.class);
-        View view = inflater.inflate(R.layout.fragment_pedido, container, false);
-        binding = FragmentPedidoBinding.inflate(inflater, container, false);
+        recyclerViewLista = binding.RVDPMPedido;
         btPagar = binding.btPagar;
+        Bundle bundle = this.getArguments();
+ //       Object z = bundle.get("pedido");
+ //        adapter = (ProductosAdapter) bundle.getSerializable("pedido");
+        Object z = bundle.get("pedido");
+        adapter1 = (PedidoAdapter) bundle.getSerializable("pedido");
+
+
         context = this.getContext();
-        inicializarVista(view);
+        inicializarVista(root);
         mPedidoViewModel.getPedido().observe(getViewLifecycleOwner(), new Observer<Pedido>() {
             @Override
             public void onChanged(Pedido pedido) {
+
                 tvNumeroPedido.setText(pedido.getIdPedido()+"");
                 tvMontoPagar.setText("$"+""+pedido.getMontoFinal()+"");
+
+
+
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                        getContext(),
+                        LinearLayoutManager.VERTICAL,
+
+                        false
+                );
+
+                recyclerViewLista.setLayoutManager(linearLayoutManager);
+
+          //      adapter1 = new PedidoAdapter(root, (List<Producto>) adapter1);
+                recyclerViewLista.setAdapter(adapter1);
+
+
+
+
+
+
             }
         });
+
 
         btPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Navigation.findNavController(view).navigate(R.id.nav_PagoFragment,bundle);
+                Navigation.findNavController(root).navigate(R.id.nav_PagoFragment,bundle);
             }
         });
 
-        return view;
+        return root;
 
     }
 

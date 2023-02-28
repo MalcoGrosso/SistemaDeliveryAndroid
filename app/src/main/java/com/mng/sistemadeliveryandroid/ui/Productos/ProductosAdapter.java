@@ -25,13 +25,14 @@ import com.mng.sistemadeliveryandroid.modelo.DetallePedido;
 import com.mng.sistemadeliveryandroid.request.ApiRetrofit;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiViewHolder> {
+public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.MiViewHolder> implements Serializable {
 
 
     private LayoutInflater layoutInflater;

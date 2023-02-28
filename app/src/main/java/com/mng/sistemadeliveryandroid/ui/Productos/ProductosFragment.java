@@ -1,10 +1,7 @@
 package com.mng.sistemadeliveryandroid.ui.Productos;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +15,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.time.Instant;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-import com.mng.sistemadeliveryandroid.MainActivity;
-import com.mng.sistemadeliveryandroid.MenuPrincipal;
+import java.time.Instant;
+
 import com.mng.sistemadeliveryandroid.R;
 import com.mng.sistemadeliveryandroid.databinding.FragmentProductosBinding;
 import com.mng.sistemadeliveryandroid.modelo.Producto;
 import com.mng.sistemadeliveryandroid.modelo.Pedido;
-import com.mng.sistemadeliveryandroid.ui.Pedido.PedidoFragment;
+import com.mng.sistemadeliveryandroid.ui.Pedido.PedidoAdapter;
 
-import java.util.Date;
 import java.util.List;
 
 public class ProductosFragment extends Fragment {
@@ -38,11 +31,13 @@ public class ProductosFragment extends Fragment {
     private ProductosViewModel rViewModel;
     private FragmentProductosBinding  binding;
     private ProductosAdapter adapter;
+    private PedidoAdapter adapter1;
     private RecyclerView recyclerViewLista;
     private Button btHacerPedido;
     private Pedido pedido;
     private Instant instant = Instant.now();
     private Context context;
+    Bundle bundle = new Bundle();
 
 
     public static ProductosFragment newInstance() {
@@ -71,6 +66,8 @@ public class ProductosFragment extends Fragment {
                 );
                 recyclerViewLista.setLayoutManager(linearLayoutManager);
                 adapter = new ProductosAdapter(root, productos);
+                adapter1 = new PedidoAdapter(root, productos);
+                bundle.putSerializable("pedido", adapter1);
                 recyclerViewLista.setAdapter(adapter);
 
             }
@@ -80,8 +77,9 @@ public class ProductosFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Bundle bundle = new Bundle();
+            //    Bundle bundle = new Bundle();
                 rViewModel.modificarPedidoUsuario(pedido);
+
                 Navigation.findNavController(root).navigate(R.id.nav_PedidoFragment, bundle);
             }
         });
